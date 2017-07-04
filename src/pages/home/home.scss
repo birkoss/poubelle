@@ -1,0 +1,18 @@
+page-home {
+    .scroll-content {
+        background-color: #f4f4f4;
+    }
+
+    .item {
+        background-color: #f4f4f4 !important;
+        padding-left: 0;
+
+        .item-inner {
+            padding-right: 0 !important;
+
+            .label-md {
+                margin-right: 0 !important;
+            }
+        }
+    }
+}

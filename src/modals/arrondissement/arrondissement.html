@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+        <ion-title>Choix d'un arrondissement</ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="close()">
+                <ion-icon name="arrow-back" showWhen="android,windows"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-list radio-group [(ngModel)]="arrondissement">
+        <ion-item-divider>Liste des arrondissements</ion-item-divider>
+        <ion-item *ngFor="let arrondissement of arrondissements">
+            <ion-label>{{ arrondissement }}</ion-label>
+            <ion-radio [value]="arrondissement" (click)="onChanged($event)"></ion-radio>
+        </ion-item>
+    </ion-list>
+
+</ion-content>
