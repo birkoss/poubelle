@@ -7,6 +7,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class DataProvider {
     public dates:Array<Object> = [];
+    public weekdays:Array<string> = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
     constructor(public http:Http) { }
 
     load():Promise<Boolean> {
@@ -24,5 +25,13 @@ export class DataProvider {
                 this.dates.push(single_date);
             }
         });
+    }
+
+    getDay(day):string {
+        day--;
+        if (day < 0) {
+            day = this.weekdays.length - 1;
+        }
+        return this.weekdays[day];
     }
 }

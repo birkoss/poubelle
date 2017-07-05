@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
 
 import { ConfigProvider } from '../../providers/config';
+import { DataProvider } from '../../providers/data';
 
 @Component({
     selector: 'arrondissement-modal',
@@ -19,26 +20,25 @@ export class ArrondissementModal {
          'Arrondissement du Mont-Bellevue',
          'Arrondissement de Lennoxville'
     ];
+
     arrondissement:string = "";
+    day:string = "";
     parent:any;
 
-    constructor(public viewCtrl:ViewController, params:NavParams, public config:ConfigProvider) {
+    constructor(public viewCtrl:ViewController, params:NavParams, public config:ConfigProvider, public data:DataProvider) {
         this.parent = params.get('parent');
+
         this.arrondissement = this.config.configs['arrondissement'];
-
-        console.log(this.arrondissement);
-    }
-
-    ionViewDidEnter() {
+        this.day = this.config.configs['day'];
     }
 
     close() {
         this.viewCtrl.dismiss();
     }
-    
+
     onChanged() {
-        console.log(this.arrondissement);
         this.config.configs['arrondissement'] = this.arrondissement;
+        this.config.configs['day'] = this.day;
         this.config.save();
 
         this.parent.scheduleDates();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.birkoss.poubelle" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Poubelle</name>
-  <description>Une affichage des collectes de poubelles de Sherbrooke</description>
+<widget id="com.birkoss.poubelle-dev" version="1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Déchets</name>
+  <description>Rappel et notifications sur la collecte des déchets de Sherbrooke</description>
   <author email="admin@birkoss.com" href="https://birkoss.com">Mathieu Robichaud</author>
   <content src="index.html"/>
   <access origin="*"/>

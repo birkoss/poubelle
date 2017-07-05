@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar color="secondary">
-        <ion-title>Collecte des poubelles</ion-title>
+        <ion-title>Collecte des déchets</ion-title>
         <ion-buttons end>
             <button (click)="showModal($event)" ion-button outline>Configurer</button>
         </ion-buttons>
@@ -17,7 +17,7 @@
             <ion-list>
                 <ion-item *ngFor="let notification of notifications">
                     <ion-card>
-                        <ion-card-header><strong>{{ formatDate(notification.data) }}</strong></ion-card-header>
+                        <ion-card-header><strong>{{ formatDate(notification.data) }} - {{ getDay(notification.data) }}</strong></ion-card-header>
                         <ion-card-content><p>{{ notification.text }}</p></ion-card-content>
                     </ion-card>
                 </ion-item>

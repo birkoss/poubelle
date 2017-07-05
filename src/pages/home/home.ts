@@ -39,10 +39,14 @@ export class HomePage {
 
         this.data.dates.forEach(single_date => {
             if (single_date['ARROND'] == this.config.configs['arrondissement']) {
-                if (dates[ single_date['DT01'] ] == null) {
-                    dates[ single_date['DT01'] ] = {'type':[]};
+                let d = new Date(single_date['DT01']);
+                d.setUTCDate(d.getUTCDate() + this.config.configs['day']);
+                let date = d.toISOString().substr(0, 10);
+
+                if (dates[date] == null) {
+                    dates[date] = {'type':[]};
                 }
-                dates[ single_date['DT01'] ].type.push(single_date['DESC']);
+                dates[date].type.push(single_date['DESC']);
             }
         });
 
@@ -62,7 +66,6 @@ export class HomePage {
                 this.scheduleNotification(dates[date].type.join(", "), yesterday, notificationDate);
             }
 
-            
             //this.scheduleNotification(dates[lastDate].type.join(", "), new Date("2001-01-01"), new Date("2001-01-02"));
 
             this.getNotifications();
@@ -105,18 +108,15 @@ export class HomePage {
         return d.getDate() + " " + m[d.getMonth()] + " " + d.getFullYear();
     }
 
+    getDay(date) {
+        let d = new Date(date);
+        return this.data.getDay(d.getUTCDay());
+    }
+
     scheduleNotification(text, notificationDate, date) {
-        let weekday = new Array(7);
-        weekday[0] = "Dimanche";
-        weekday[1] = "Lundi";
-        weekday[2] = "Mardi";
-        weekday[3] = "Mercredi";
-        weekday[4] = "Jeudi";
-        weekday[5] = "Vendredi";
-        weekday[6] = "Samedi";
         this.localNotifications.schedule({
             id: date.toISOString().substr(0, 10).replace(/-/g, ''),
-            title: "Collecte des poubelles - " + weekday[date.getUTCDay()],
+            title: "Collecte des poubelles - " + this.data.getDay(date.getUTCDay()),
             text: text,
             data: date.toISOString().substr(0, 10),
             at: notificationDate,
