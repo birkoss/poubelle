@@ -11,20 +11,24 @@
 
 <ion-content padding>
 
-    <ion-list radio-group [(ngModel)]="arrondissement">
-        <ion-item-divider>Liste des arrondissements</ion-item-divider>
-        <ion-item *ngFor="let arrondissement of arrondissements">
-            <ion-label>{{ arrondissement }}</ion-label>
-            <ion-radio [value]="arrondissement" (click)="onChanged($event)"></ion-radio>
-        </ion-item>
-    </ion-list>
+    <ion-card>
+        <ion-list radio-group [(ngModel)]="arrondissement">
+            <ion-item-divider>Liste des arrondissements</ion-item-divider>
+            <ion-item *ngFor="let arrondissement of arrondissements">
+                <ion-label>{{ arrondissement }}</ion-label>
+                <ion-radio [value]="arrondissement" (click)="onChanged($event)"></ion-radio>
+            </ion-item>
+        </ion-list>
+    </ion-card>
 
-    <ion-list radio-group [(ngModel)]="day">
-        <ion-item-divider>Choix de la journée</ion-item-divider>
-        <ion-item *ngFor="let day of data.weekdays; let i = index">
-            <ion-label>{{ day }}</ion-label>
-            <ion-radio [value]="i" (click)="onChanged($event)"></ion-radio>
-        </ion-item>
-    </ion-list>
+    <ion-card>
+        <ion-list radio-group [(ngModel)]="day">
+            <ion-item-divider>Choix de la journée</ion-item-divider>
+            <ion-item *ngFor="let day of data.weekdays; let i = index">
+                <ion-label>{{ day }}</ion-label>
+                <ion-radio [value]="i" (click)="onChanged($event)"></ion-radio>
+            </ion-item>
+        </ion-list>
+    </ion-card>
 
 </ion-content>
