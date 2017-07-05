@@ -20,7 +20,7 @@ export class HomePage {
 
     ionViewDidLoad() {
         //this.notifications.push({data:'2017-01-01', text:'AAA'});
-        this.notifications.push({data:'2017-01-01', text:'AAA hjfdhf hfd fsf s, fsd hfjds hfdsjf hjds hf, fdsh jfdsds fsjd fdsfd'});
+        //this.notifications.push({data:'2017-01-01', text:'AAA hjfdhf hfd fsf s, fsd hfjds hfdsjf hjds hf, fdsh jfdsds fsjd fdsfd'});
         //this.scheduleDates();
         this.getNotifications();
     }
