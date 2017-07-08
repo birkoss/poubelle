@@ -1,4 +1,4 @@
-cordova build --release --prod android
+ionic cordova build --release --prod android
 
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore poubelle.keystore platforms/android/build/outputs/apk/android-release-unsigned.apk poubelle
 
