@@ -114,15 +114,18 @@ export class HomePage {
     }
 
     scheduleNotification(text, notificationDate, date) {
-        this.localNotifications.schedule({
-            id: date.toISOString().substr(0, 10).replace(/-/g, ''),
-            title: "Collecte des poubelles - " + this.data.getDay(date.getUTCDay()),
-            text: text,
-            data: date.toISOString().substr(0, 10),
-            at: notificationDate,
-            led: 'ff00ff',
-            icon: 'ic_notifications',
-            sound: null
-        });
+        let now = new Date().toJSON().slice(0, 10);
+        if (now >= date) {
+            this.localNotifications.schedule({
+                id: date.toISOString().substr(0, 10).replace(/-/g, ''),
+                title: "Collecte des poubelles - " + this.data.getDay(date.getUTCDay()),
+                text: text,
+                data: date.toISOString().substr(0, 10),
+                at: notificationDate,
+                led: 'ff00ff',
+                icon: 'ic_notifications',
+                sound: null
+            });
+        }
     }
 }

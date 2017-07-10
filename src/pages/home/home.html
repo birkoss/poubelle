@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content padding>
-    <div *ngIf="!isConfigured()">
+    <div *ngIf="!isConfigured()" class="message">
         <p>Aucun arrondissement de configuré!</p>
     </div>
     <div *ngIf="isConfigured()">
