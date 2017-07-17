@@ -38,6 +38,7 @@ export class HomePage {
         let dates = {};
 
         this.data.dates.forEach(single_date => {
+            console.log(single_date['ARROND'] + " vs " + this.config.configs['arrondissement']);
             if (single_date['ARROND'] == this.config.configs['arrondissement']) {
                 let d = new Date(single_date['DT01']);
                 d.setUTCDate(d.getUTCDate() + this.config.configs['day']);
@@ -115,7 +116,7 @@ export class HomePage {
 
     scheduleNotification(text, notificationDate, date) {
         let now = new Date().toJSON().slice(0, 10);
-        if (now >= date) {
+        if (now <= date.toISOString().substr(0, 10)) {
             this.localNotifications.schedule({
                 id: date.toISOString().substr(0, 10).replace(/-/g, ''),
                 title: "Collecte des poubelles - " + this.data.getDay(date.getUTCDay()),
